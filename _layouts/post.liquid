@@ -12,9 +12,6 @@ layout: default
   </style>
 {% endif %}
 
-{% if page.toc %}
-  {{ content | toc }}
-{% endif %}
 {% assign url_beginning = page.url | slice: 0, 6 %}
 
 <div class="post">
@@ -67,7 +64,9 @@ layout: default
   <article class="post-content">
     {% if page.toc and page.toc.beginning %}
       <div id="table-of-contents">
-        {% toc %}
+        {% if page.toc %}
+        {{ content | toc }}
+        {% endif %}
       </div>
       <hr>
     {% endif %}
