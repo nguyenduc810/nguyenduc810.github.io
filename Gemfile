@@ -43,6 +43,8 @@ gem 'jekyll', '~> 4.3.4'
 group :jekyll_plugins do
     gem 'classifier-reborn'
     gem 'jekyll-archives'
+    gem 'classifier-reborn'
+    gem 'jekyll-archives'
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
     gem 'jekyll-get-json'
