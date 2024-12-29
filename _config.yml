@@ -208,6 +208,7 @@ keep_files:
 
 # Plug-ins
 plugins:
+  - jekyll-scholar
   - jekyll-toc
   - jekyll-archives
   - jekyll-email-protect

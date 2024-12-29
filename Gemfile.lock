@@ -268,7 +268,7 @@ DEPENDENCIES
   css_parser
   feedjira
   httparty
-  jekyll
+  jekyll (~> 4.3.4)
   jekyll-archives
   jekyll-email-protect
   jekyll-feed
@@ -282,7 +282,7 @@ DEPENDENCIES
   jekyll-scholar
   jekyll-sitemap
   jekyll-tabs
-  jekyll-toc
+  jekyll-toc (~> 0.19.0)
   jekyll-twitter-plugin
   jemoji
   terser
