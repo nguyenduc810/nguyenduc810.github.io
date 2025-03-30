@@ -1,14 +1,14 @@
 ---
-title: "Paper Title Number 1"
+title: "Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks"
 collection: publications
-category: manuscripts
+category: conferences
 permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'Journal 1'
-slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
-bibtexurl: 'http://academicpages.github.io/files/bibtex1.bib'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+excerpt: 'We propose a novel approach called SVH-PSL, which integrates Stein Variational Gradient Descent (SVGD) with Hypernetworks for efficient Pareto set learning. Our method addresses the issues of fragmented surrogate models and pseudo-local optima by collectively moving particles in a manner that smooths out the solution space. The particles interact with each other through a kernel function, which helps maintain diversity and encourages the exploration of underexplored regions. This kernel-based interaction prevents particles from clustering around pseudo-local optima and promotes convergence towards globally optimal solutions.'
+date: 2025/03/01
+venue: 'AAAI Conference on Artificial Intelligence'
+# slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
+paperurl: 'https://arxiv.org/pdf/2412.17312'
+# bibtexurl: 'http://academicpages.github.io/files/bibtex1.bib'
+citation: 'Nguyen, M. D., Dinh, P. M., Nguyen, Q. H., Hoang, L. P., & Le, D. D. (2024). Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks. arXiv preprint arXiv:2412.17312.'
 ---
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
+Expensive multi-objective optimization problems (EMOPs) are common in real-world scenarios where evaluating objective functions is costly and involves extensive computations or physical experiments. Current Pareto set learning methods for such problems often rely on surrogate models like Gaussian processes to approximate the objective functions. These surrogate models can become fragmented, resulting in numerous small uncertain regions between explored solutions. When using acquisition functions such as the Lower Confidence Bound (LCB), these uncertain regions can turn into pseudo-local optima, complicating the search for globally optimal solutions. To address these challenges, we propose a novel approach called SVH-PSL, which integrates Stein Variational Gradient Descent (SVGD) with Hypernetworks for efficient Pareto set learning. Our method addresses the issues of fragmented surrogate models and pseudo-local optima by collectively moving particles in a manner that smooths out the solution space. The particles interact with each other through a kernel function, which helps maintain diversity and encourages the exploration of underexplored regions. This kernel-based interaction prevents particles from clustering around pseudo-local optima and promotes convergence towards globally optimal solutions. Our approach aims to establish robust relationships between trade-off reference vectors and their corresponding true Pareto solutions, overcoming the limitations of existing methods. Through extensive experiments across both synthetic and real-world MOO benchmarks, we demonstrate that SVH-PSL significantly improves the quality of the learned Pareto set, offering a promising solution for expensive multi-objective optimization problems.
