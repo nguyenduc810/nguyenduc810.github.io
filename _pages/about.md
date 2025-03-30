@@ -31,7 +31,7 @@ redirect_from:
 
 I'm Minh-Duc, a young researcher with a strong background in mathematics and informatics. I earned my Bachelor's degree from Hanoi University of Science and Technology ([HUST](https://hust.edu.vn/en/)), where I was guided by Dr. [Tran Ngoc Thang](https://scholar.google.com/citations?user=65LF4RQAAAAJ&hl=en) in research on recommendation systems incorporating Multi-objective learning to enhance user-item matching.
 
-After graduation, I joined the [R2Studio](https://sites.google.com/view/r2studio/home) reseach group on AI-empowered Search and Recommendation at [VinUniversity](https://vinuni.edu.vn/), under the leadership of Assistant Professor Le Duy Dung ([Andrew](https://sites.google.com/view/r2studio/home)). Here, our team explores optimization algorithms for multi-objective optimization, contributing to advancements in this field.
+After graduation, I joined the [R2Studio](https://sites.google.com/view/r2studio/home) reseach group on AI-empowered Search and Recommendation at [VinUniversity](https://vinuni.edu.vn/), under the leadership of Assistant Professor Le Duy Dung ([Andrew](https://andrew-dungle.github.io/?fbclid=IwY2xjawJWbyNleHRuA2FlbQIxMAABHdfblmezXXaVy9JlecbrZfTCb6DXYAYjoE_B6RXo9YJjsvjLnH6Roq5Efw_aem_PXBDt10MUt1ozLke85jnQA)). Here, our team explores optimization algorithms for multi-objective optimization, contributing to advancements in this field.
 
 I am trying to develop my research to find suitable PhD programs in fall 2026.
 
