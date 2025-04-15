@@ -52,7 +52,7 @@ I am trying to develop my research to find suitable PhD programs in fall 2026.
 
 **Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks**\\
 <small>**Minh-Duc Nguyen**, Phuong Mai Dinh, Quang-Huy Nguyen, Hoang Phi Long, Dung D. Le\\
-_The 39th Annual AAAI Conference on Artificial Intelligence (AAAI 2025) [Paper](https://arxiv.org/pdf/2412.17312?), [Code](https://github.com/nguyenduc810/SVH-PSL)_ </small>
+_Proceedings of the AAAI Conference on Artificial Intelligence, 39(18), 19677-19685. (AAAI25) [Paper](https://ojs.aaai.org/index.php/AAAI/article/view/34167), [Code](https://github.com/nguyenduc810/SVH-PSL)_ </small>
 
 **Keyword-driven Retrieval-Augmented Large Language Models for Cold-start User Recommendations**\\
 <small>Dang Hai Kieu, **Minh Duc Nguyen**, Thanh-Son Nguyen, Dung D. Le\\
