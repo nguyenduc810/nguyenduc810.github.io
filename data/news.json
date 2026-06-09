@@ -1,0 +1,22 @@
+[
+  {
+    "date": "June 2026",
+    "title": "Journal Paper Published",
+    "body": "Our paper KALM4Rec was published in Spring Nature Machine Learning."
+  },
+  {
+    "date": "February 2026",
+    "title": "Master's Admission",
+    "body": "Accepted into the M.Sc. in Computer Science program at VinUniversity with a full scholarship."
+  },
+  {
+    "date": "December 2025",
+    "title": "ECIR 2026 Acceptance",
+    "body": "Our paper PromptHG was accepted for presentation in the Full Papers Track at ECIR 2026."
+  },
+  {
+    "date": "December 2024",
+    "title": "AAAI 2025 Acceptance",
+    "body": "Our paper 'Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks' was accepted at the AAAI 2025 conference."
+  }
+]

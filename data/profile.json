@@ -1,0 +1,42 @@
+{
+  "name_en": "Minh-Duc Nguyen",
+  "title": "Master's Student",
+  "org": "VinUniversity",
+  "bio": "I am an AI / Machine Learning researcher at VinUniversity. I hold a B.Sc. in Mathematics & Informatics from Hanoi University of Science and Technology, and I'm a Master's student at VinUniversity (full scholarship, Spring 2026).",
+  "cv_url": "#",
+  "avatar": "assets/images/avatar.jpg",
+  "bg": "assets/images/bg.webp",
+  "email": "26duc.nm@vinuni.edu.vn",
+  "social": {
+    "email": "26duc.nm@vinuni.edu.vn",
+    "twitter": "",
+    "instagram": "https://www.instagram.com/ddwcs__/",
+    "github": "https://github.com/nguyenduc810",
+    "linkedin": "https://www.linkedin.com/in/ducnm810/",
+    "scholar": "https://scholar.google.com/citations?user=hOfoVOkAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0009-0003-6518-6301"
+  },
+  "interests": [
+    "World Models for Robot Learning",
+    "Multi-objective Optimization",
+    "LLM for Recommendation Systems",
+    "AI in Application"
+  ],
+  "education": [
+    {
+      "degree": "M.Sc., Computer Science — Full Scholarship",
+      "school": "VinUniversity",
+      "years": "2026–present",
+      "supervisors": [
+        {"name": "Assist Prof. Le Duy Dung", "url": "andrew-dungle.github.io"}
+      ]
+    },
+    {
+      "degree": "B.Sc., Mathematics & Informatics",
+      "school": "Hanoi University of Science and Technology",
+      "supervisors": [
+        {"name": "Dr. Tran Ngoc Thang", "url": "https://scholar.google.com/citations?user=65LF4RQAAAAJ&hl=vi"}
+      ]
+    }
+  ]
+}

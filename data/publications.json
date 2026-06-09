@@ -1,0 +1,175 @@
+[
+  {
+    "id": 4,
+    "title": "PromptHG: Prompt-Enhanced Heterogeneous Graph for Personalized News Recommendation",
+    "authors": [
+      {"name": "Hai-Dang Kieu"},
+      {"name": "Delvin Ce Zhang"},
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Qiang Wu"},
+      {"name": "Min Xu"},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "conference",
+    "venue": "ECIR 2026 - European Conference on Information Retrieval",
+    "status": "",
+    "links": {
+      "pdf": "https://link.springer.com/chapter/10.1007/978-3-032-21289-4_35",
+      "arxiv": "#",
+      "code": "",
+      "bibtex": "#"
+    }
+  },
+  {
+    "id": 1,
+    "title": "Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks",
+    "authors": [
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Phuong Mai Dinh"},
+      {"name": "Quang-Huy Nguyen"},
+      {"name": "Long P. Hoang"},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "conference",
+    "venue": "AAAI 2025 - Proceedings of the AAAI Conference on Artificial Intelligence",
+    "status": "",
+    "links": {
+      "pdf": "https://ojs.aaai.org/index.php/AAAI/article/view/34167",
+      "arxiv": "#",
+      "code": "https://github.com/nguyenduc810/SVH-PSL",
+      "bibtex": "#"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Keyword-driven Retrieval-Augmented Large Language Models for Cold-start User Recommendations",
+    "authors": [
+      {"name": "Hai-Dang Kieu"},
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Thanh-Son Nguyen"},
+      {"name": "Dung D Le"}
+    ],
+    "type": "conference",
+    "venue": "WWW 2025 - Companion Proceedings of the ACM on Web Conference",
+    "status": "",
+    "links": {
+      "pdf": "https://dl.acm.org/doi/abs/10.1145/3701716.3717855",
+      "code": "#"
+    }
+  },
+    {
+    "id": 3,
+    "title": "Enhancing News Recommendation with Hierarchical LLM Prompting",
+    "authors": [
+      {"name": "Hai-Dang Kieu"},
+      {"name": "Delvin Ce Zhang"},
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Min Xu"},
+      {"name": "Qiang Wu"},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "conference",
+    "venue": "WWW 2025 - Companion Proceedings of the ACM on Web Conference",
+    "status": "",
+    "links": {
+      "pdf": "https://dl.acm.org/doi/abs/10.1145/3701716.3735085",
+      "arxiv": "#",
+      "code": "",
+      "bibtex": "#"
+    }
+  },
+  {
+    "id": 5,
+    "title": "KALM4Rec: Keyword-Driven Retrieval-Augmented Large Language Models for Cold-Start User Recommendations",
+    "authors": [
+      {"name": "Hai-Dang Kieu"},
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Wray Buntine"},
+      {"name": "Thanh-Son Nguyen"},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "journal",
+    "venue": "Spring Nature Machine Learning",
+    "status": "",
+    "links": {
+      "pdf": "https://link.springer.com/article/10.1007/s10994-026-07066-2",
+      "arxiv": "#",
+      "code": "https://github.com/dangkh/kalm4rec_official",
+      "bibtex": "#"
+    }
+  },
+  {
+    "id": 6,
+    "title": "AMEM4Rec: Leveraging Cross-User Similarity for Memory Evolution in Agentic LLM Recommenders",
+    "authors": [
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+       {"name": "Hai-Dang Kieu"},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "preprint",
+    "venue": "",
+    "status": "",
+    "links": {
+      "pdf": "",
+      "arxiv": "https://arxiv.org/abs/2602.08837",
+      "code": "",
+      "bibtex": "#"
+    }
+  },
+  {
+    "id": 7,
+    "title": "A Framework for Controllable Multi-objective Learning with Annealed Stein Variational Hypernetworks",
+    "authors": [
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "preprint",
+    "venue": "",
+    "status": "Under review in TIST journal",
+    "links": {
+      "pdf": "",
+      "arxiv": "https://arxiv.org/abs/2506.06715",
+      "code": "",
+      "bibtex": "#"
+    }
+  },
+  {
+    "id": 8,
+    "title": "SurveyG: A Multi-Agent LLM Framework with Hierarchical Citation Graph for Automated Survey Generation",
+    "authors": [
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Minh-Anh Nguyen"},
+      {"name": "Ha Lan N.T"},
+      {"name": "Hai-Dang Kieu"},
+      {"name": "Nguyen Tien Dong"},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "preprint",
+    "venue": "",
+    "status": "Under review",
+    "links": {
+      "pdf": "",
+      "arxiv": "https://arxiv.org/abs/2510.07733",
+      "code": "",
+      "bibtex": "#"
+    }
+  },
+  {
+    "id": 9,
+    "title": "Optimizing Electric Vehicle Charging Station Placement Using Reinforcement Learning and Agent-Based Simulations",
+    "authors": [
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Phi Long Nguyen"},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "preprint",
+    "venue": "",
+    "status": "Under review",
+    "links": {
+      "pdf": "",
+      "arxiv": "https://arxiv.org/abs/2511.01218",
+      "code": "",
+      "bibtex": "#"
+    }
+  }
+]
