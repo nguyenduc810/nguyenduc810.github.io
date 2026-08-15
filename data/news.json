@@ -1,8 +1,13 @@
 [
   {
     "date": "June 2026",
+    "title": "TIST Paper Accepted",
+    "body": "Our paper 'A Framework for Controllable Multi-objective Learning with Annealed Stein Variational Hypernetworks' was accepted at ACM Transactions on Intelligent Systems and Technology (TIST)."
+  },
+  {
+    "date": "June 2026",
     "title": "Journal Paper Published",
-    "body": "Our paper KALM4Rec was published in Spring Nature Machine Learning."
+    "body": "Our paper KALM4Rec was published in Springer Nature Machine Learning."
   },
   {
     "date": "February 2026",
@@ -17,6 +22,6 @@
   {
     "date": "December 2024",
     "title": "AAAI 2025 Acceptance",
-    "body": "Our paper 'Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks' was accepted at the AAAI 2025 conference."
+    "body": "Our paper 'Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks' was accepted at AAAI 2025."
   }
 ]

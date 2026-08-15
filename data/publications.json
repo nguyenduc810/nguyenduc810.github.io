@@ -2,6 +2,7 @@
   {
     "id": 4,
     "title": "PromptHG: Prompt-Enhanced Heterogeneous Graph for Personalized News Recommendation",
+    "thumbnail": "assets/images/papers/promptHG.png",
     "authors": [
       {"name": "Hai-Dang Kieu"},
       {"name": "Delvin Ce Zhang"},
@@ -11,7 +12,7 @@
       {"name": "Dung D. Le"}
     ],
     "type": "conference",
-    "venue": "ECIR 2026 - European Conference on Information Retrieval",
+    "venue": "European Conference on Information Retrieval (ECIR) · 2026",
     "status": "",
     "links": {
       "pdf": "https://link.springer.com/chapter/10.1007/978-3-032-21289-4_35",
@@ -23,6 +24,7 @@
   {
     "id": 1,
     "title": "Improving Pareto Set Learning for Expensive Multi-objective Optimization via Stein Variational Hypernetworks",
+    "thumbnail": "assets/images/papers/svh_psl.png",
     "authors": [
       {"name": "Minh-Duc Nguyen", "is_me": true},
       {"name": "Phuong Mai Dinh"},
@@ -31,7 +33,7 @@
       {"name": "Dung D. Le"}
     ],
     "type": "conference",
-    "venue": "AAAI 2025 - Proceedings of the AAAI Conference on Artificial Intelligence",
+    "venue": "AAAI Conference on Artificial Intelligence (AAAI) · 2025",
     "status": "",
     "links": {
       "pdf": "https://ojs.aaai.org/index.php/AAAI/article/view/34167",
@@ -43,6 +45,7 @@
   {
     "id": 2,
     "title": "Keyword-driven Retrieval-Augmented Large Language Models for Cold-start User Recommendations",
+    "thumbnail": "assets/images/papers/kalm.png",
     "authors": [
       {"name": "Hai-Dang Kieu"},
       {"name": "Minh-Duc Nguyen", "is_me": true},
@@ -50,16 +53,17 @@
       {"name": "Dung D Le"}
     ],
     "type": "conference",
-    "venue": "WWW 2025 - Companion Proceedings of the ACM on Web Conference",
+    "venue": "The Web Conference (WWW) · 2025",
     "status": "",
     "links": {
       "pdf": "https://dl.acm.org/doi/abs/10.1145/3701716.3717855",
       "code": "#"
     }
   },
-    {
+  {
     "id": 3,
     "title": "Enhancing News Recommendation with Hierarchical LLM Prompting",
+    "thumbnail": "assets/images/papers/pnr_llm.png",
     "authors": [
       {"name": "Hai-Dang Kieu"},
       {"name": "Delvin Ce Zhang"},
@@ -69,7 +73,7 @@
       {"name": "Dung D. Le"}
     ],
     "type": "conference",
-    "venue": "WWW 2025 - Companion Proceedings of the ACM on Web Conference",
+    "venue": "The Web Conference (WWW) · 2025",
     "status": "",
     "links": {
       "pdf": "https://dl.acm.org/doi/abs/10.1145/3701716.3735085",
@@ -79,8 +83,27 @@
     }
   },
   {
+    "id": 7,
+    "title": "A Framework for Controllable Multi-objective Learning with Annealed Stein Variational Hypernetworks",
+    "thumbnail": "assets/images/papers/svh_mol.png",
+    "authors": [
+      {"name": "Minh-Duc Nguyen", "is_me": true},
+      {"name": "Dung D. Le"}
+    ],
+    "type": "journal",
+    "venue": "ACM Transactions on Intelligent Systems and Technology (TIST) · 2026",
+    "status": "",
+    "links": {
+      "pdf": "",
+      "arxiv": "https://arxiv.org/abs/2506.06715",
+      "code": "",
+      "bibtex": "#"
+    }
+  },
+  {
     "id": 5,
     "title": "KALM4Rec: Keyword-Driven Retrieval-Augmented Large Language Models for Cold-Start User Recommendations",
+    "thumbnail": "assets/images/papers/KALM4REC.png",
     "authors": [
       {"name": "Hai-Dang Kieu"},
       {"name": "Minh-Duc Nguyen", "is_me": true},
@@ -89,7 +112,7 @@
       {"name": "Dung D. Le"}
     ],
     "type": "journal",
-    "venue": "Spring Nature Machine Learning",
+    "venue": "Springer Nature Machine Learning · 2026",
     "status": "",
     "links": {
       "pdf": "https://link.springer.com/article/10.1007/s10994-026-07066-2",
@@ -101,14 +124,15 @@
   {
     "id": 6,
     "title": "AMEM4Rec: Leveraging Cross-User Similarity for Memory Evolution in Agentic LLM Recommenders",
+    "thumbnail": "assets/images/papers/MemA_Rec.png",
     "authors": [
       {"name": "Minh-Duc Nguyen", "is_me": true},
-       {"name": "Hai-Dang Kieu"},
+      {"name": "Hai-Dang Kieu"},
       {"name": "Dung D. Le"}
     ],
     "type": "preprint",
     "venue": "",
-    "status": "",
+    "status": "Under review",
     "links": {
       "pdf": "",
       "arxiv": "https://arxiv.org/abs/2602.08837",
@@ -116,26 +140,11 @@
       "bibtex": "#"
     }
   },
-  {
-    "id": 7,
-    "title": "A Framework for Controllable Multi-objective Learning with Annealed Stein Variational Hypernetworks",
-    "authors": [
-      {"name": "Minh-Duc Nguyen", "is_me": true},
-      {"name": "Dung D. Le"}
-    ],
-    "type": "preprint",
-    "venue": "",
-    "status": "Under review in TIST journal",
-    "links": {
-      "pdf": "",
-      "arxiv": "https://arxiv.org/abs/2506.06715",
-      "code": "",
-      "bibtex": "#"
-    }
-  },
+  
   {
     "id": 8,
     "title": "SurveyG: A Multi-Agent LLM Framework with Hierarchical Citation Graph for Automated Survey Generation",
+    "thumbnail": "assets/images/papers/surveyG.png",
     "authors": [
       {"name": "Minh-Duc Nguyen", "is_me": true},
       {"name": "Minh-Anh Nguyen"},
@@ -157,6 +166,7 @@
   {
     "id": 9,
     "title": "Optimizing Electric Vehicle Charging Station Placement Using Reinforcement Learning and Agent-Based Simulations",
+    "thumbnail": "assets/images/papers/charging.png",
     "authors": [
       {"name": "Minh-Duc Nguyen", "is_me": true},
       {"name": "Phi Long Nguyen"},
