@@ -1,41 +1,86 @@
 {
   "name_en": "Minh-Duc Nguyen",
-  "title": "MSc in Computer Science",
+  "title": "M.Sc. Student in Computer Science",
   "org": "VinUniversity",
-  "bio": "”Whatever you are interested in and get excited about, that is what you should do.”- Michael Kosterlitz - Nobel Prize in Physics 2016 ",
+  "org_url": "https://vinuni.edu.vn",
+  "location": "Hanoi, Vietnam",
+  "about": [
+    "I am an M.Sc. student in Computer Science at <a href=\"https://vinuni.edu.vn\">VinUniversity</a> (full scholarship) and a research assistant at R2Studio, advised by <a href=\"https://andrew-dungle.github.io\">Asst. Prof. Dung D. Le</a>. I received my B.Sc. in Mathematics and Informatics from Hanoi University of Science and Technology, advised by Dr. Ngoc Thang Tran.",
+    "My research focuses on <em>LLM-based and agentic recommender systems</em>, <em>memory for LLM agents</em>, and <em>multi-objective optimization</em> with Pareto set learning."
+  ],
+  "quote": "“Whatever you are interested in and get excited about, that is what you should do.” — Michael Kosterlitz, Nobel Prize in Physics 2016",
   "cv_url": "assets/cv.pdf",
   "avatar": "assets/images/avatar.jpg",
-  "bg": "",
   "email": "26duc.nm@vinuni.edu.vn",
   "social": {
     "email": "26duc.nm@vinuni.edu.vn",
-    "twitter": "",
-    "instagram": "https://www.instagram.com/ddwcs__/",
+    "scholar": "https://scholar.google.com/citations?user=hOfoVOkAAAAJ&hl=en",
     "github": "https://github.com/nguyenduc810",
     "linkedin": "https://www.linkedin.com/in/ducnm810/",
-    "scholar": "https://scholar.google.com/citations?user=hOfoVOkAAAAJ&hl=en",
-    "orcid": "https://orcid.org/0009-0003-6518-6301"
+    "orcid": "https://orcid.org/0009-0003-6518-6301",
+    "twitter": "",
+    "instagram": "https://www.instagram.com/ddwcs__/"
   },
   "interests": [
-    "World Models for Robot Learning",
-    "Multi-objective Optimization",
-    "LLM for Recommendation Systems",
-    "AI in Application"
+    "LLM-based & Agentic Recommender Systems",
+    "Memory for LLM Agents",
+    "Multi-Objective Optimization",
+    "Pareto Set Learning",
+    "World Models for Robot Learning"
   ],
   "education": [
     {
-      "degree": "M.Sc., Computer Science — Full Scholarship",
-      "school": "VinUniversity",
-      "years": "2026–present",
+      "degree": "M.Sc. in Computer Science — Full Scholarship",
+      "school": "VinUniversity, Hanoi",
+      "years": "2026 – 2027 (expected)",
       "supervisors": [
-        {"name": "Assist Prof. Le Duy Dung", "url": "https://andrew-dungle.github.io"}
+        {
+          "name": "Asst. Prof. Dung D. Le",
+          "url": "https://andrew-dungle.github.io"
+        }
       ]
     },
     {
-      "degree": "B.Sc., Mathematics & Informatics",
-      "school": "Hanoi University of Science and Technology",
+      "degree": "B.Sc. in Mathematics and Informatics",
+      "school": "Hanoi University of Science and Technology (HUST)",
+      "years": "2019 – 2024",
       "supervisors": [
-        {"name": "Dr. Tran Ngoc Thang", "url": "https://scholar.google.com/citations?user=65LF4RQAAAAJ&hl=vi"}
+        {
+          "name": "Dr. Ngoc Thang Tran",
+          "url": "https://scholar.google.com/citations?user=65LF4RQAAAAJ&hl=vi"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Research Assistant",
+      "org": "R2Studio, VinUniversity",
+      "years": "Sep 2023 – present",
+      "advisors": "Asst. Prof. Dung D. Le",
+      "points": [
+        "<b>Memory for LLM-based recommendation:</b> collaborative memory mechanisms that capture cross-user signals for agentic LLM recommenders (AMEM4Rec), and a trainable latent memory that refines LLM semantics into collaborative signals (in preparation).",
+        "<b>LLM-based recommendation:</b> retrieval-augmented LLMs for cold-start users (KALM4Rec) and LLM prompting for news recommendation (WWW 2025, ECIR 2026).",
+        "<b>Multi-objective optimization:</b> Stein Variational Hypernetworks for Pareto set learning in expensive multi-objective optimization (AAAI 2025, ACM TIST)."
+      ]
+    },
+    {
+      "role": "AI for Materials Science: Inverse Design for Beams",
+      "org": "VinUniversity",
+      "years": "Sep 2024 – 2026",
+      "advisors": "Asst. Prof. Dung D. Le; Asst. Prof. Dang Tung Nguyen",
+      "points": [
+        "Generative model for synthetic data augmentation and novel material design exploration.",
+        "Multi-objective Bayesian optimization to find beam designs that balance multiple structural objectives."
+      ]
+    },
+    {
+      "role": "EV Charging Station Placement via Reinforcement Learning",
+      "org": "VinUniversity",
+      "years": "Sep 2024 – May 2025",
+      "advisors": "Asst. Prof. Dung D. Le; Dr. Phi Long Nguyen",
+      "points": [
+        "RL framework with a tailored action space for optimizing charging-station locations, coupled with an agent-based simulation of urban EV mobility."
       ]
     }
   ]

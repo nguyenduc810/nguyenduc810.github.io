@@ -1,24 +1,13 @@
-function safeJson(url, fallback) {
-  return fetch(`${url}?v=${Date.now()}`).then(r => {
-    if (!r.ok) throw new Error(r.status);
-    return r.json();
-  }).catch(() => fallback);
-}
+// ── Helpers ─────────────────────────────────────────────────
+const getJson = url => fetch(`${url}?v=${Date.now()}`)
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
 
-function esc(str) {
-  return String(str ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+const esc = s => String(s ?? '')
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function extractYear(venue) {
-  const m = String(venue || '').match(/\b(20\d{2})\b/);
-  return m ? m[1] : '—';
-}
+const ok = url => url && url !== '#';
+const $ = id => document.getElementById(id);
 
-// ── Social icon SVGs ────────────────────────────────────────
 const ICONS = {
   email:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>`,
   github:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7a10.3 10.3 0 0 0-3.3 20.1c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.3 10.3 0 0 0 12 1.7Z"/></svg>`,
@@ -29,265 +18,177 @@ const ICONS = {
   orcid:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM8.3 7.6a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8Zm.7 9.1H7.6V8.9H9v7.8Zm6.2-3.9c0 2.5-1.6 3.9-3.9 3.9h-2V8.9h2c2.4 0 3.9 1.5 3.9 3.9Zm-1.4 0c0-1.7-1-2.6-2.5-2.6h-.7v5.2h.7c1.4 0 2.5-.8 2.5-2.6Z"/></svg>`,
 };
 
-const SOCIAL_LABELS = {
-  email: 'Email', github: 'GitHub', scholar: 'Scholar',
-  linkedin: 'LinkedIn', twitter: 'X / Twitter',
-  instagram: 'Instagram', orcid: 'ORCID',
-};
-
-// ── Hero ────────────────────────────────────────────────────
-function renderHero(profile) {
-  const grid = document.getElementById('hero-grid');
-  if (!grid) return;
-
-  // Social links
-  const socialHTML = Object.entries(profile.social || {})
-    .filter(([, url]) => url && url !== '' && url !== '#')
-    .map(([key, url]) => {
-      const href = key === 'email' ? `mailto:${url}` : url;
-      const label = SOCIAL_LABELS[key] || key;
-      const icon = ICONS[key] || '';
-      return `<a href="${esc(href)}" target="${key === 'email' ? '_self' : '_blank'}" rel="noopener">${icon} ${esc(label)}</a>`;
-    }).join('');
-
-  // Portrait: image or placeholder
-  const avatarInner = profile.avatar
-    ? `<img src="${esc(profile.avatar)}" alt="${esc(profile.name_en)}"
-         onerror="this.parentNode.innerHTML=this.parentNode.innerHTML.replace(this.outerHTML,'<div class=\\'placeholder\\'><svg viewBox=\\'0 0 100 120\\' width=\\'120\\' fill=\\'#8FB0A0\\'><circle cx=\\'50\\' cy=\\'42\\' r=\\'22\\'/><path d=\\'M12 120 C12 88 30 74 50 74 C70 74 88 88 88 120 Z\\'/></svg></div>')">`
-    : `<div class="placeholder">
-         <svg viewBox="0 0 100 120" width="120" fill="#8FB0A0" aria-hidden="true">
-           <circle cx="50" cy="42" r="22"/>
-           <path d="M12 120 C12 88 30 74 50 74 C70 74 88 88 88 120 Z"/>
-         </svg>
-       </div>`;
-
-  // CV button
-  const cvBtn = profile.cv_url
-    ? `<a class="btn" href="${esc(profile.cv_url)}" target="_blank" rel="noopener">Curriculum Vitae</a>`
-    : '';
-
-  // Education inline
-  const eduHTML = (profile.education || []).map(e => {
-    const supervisorHTML = (e.supervisors || []).filter(s => s.name)
-      .map(s => s.url && s.url !== '' && s.url !== 'https://'
-        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`
-        : esc(s.name)
-      ).join(', ');
-    const years = (e.years || '').replace(/–present/, '–now');
-    return `<div class="edu-inline-item">
-      <div class="edu-inline-deg">${esc(e.degree)}${years ? ` <span class="edu-inline-years">${esc(years)}</span>` : ''}</div>
-      <div class="edu-inline-school">${esc(e.school)}${supervisorHTML ? ` · Advisor: ${supervisorHTML}` : ''}</div>
-    </div>`;
-  }).join('');
-
-  grid.innerHTML = `
-    <div class="hero-text">
-      <p class="eyebrow reveal">${esc(profile.title || '')} · ${esc(profile.org || '')}</p>
-      <h1 class="hero-name reveal">${esc(profile.name_en || '')}</h1>
-      <div class="hero-about reveal">
-        <p>${esc(profile.bio || '')}</p>
-      </div>
-      ${eduHTML ? `<div class="edu-inline reveal">${eduHTML}</div>` : ''}
-      <div class="hero-links reveal">
-        ${cvBtn}
-      </div>
-    </div>
-
-    <div class="portrait reveal">
-      <svg class="hero-svg" viewBox="0 0 300 300" fill="none" aria-hidden="true">
-        <g stroke="#C9D3CC" stroke-width="1">
-          <line x1="40" y1="20" x2="40" y2="260"/>
-          <line x1="40" y1="260" x2="280" y2="260"/>
-        </g>
-        <g fill="#C4CDC6">
-          <circle cx="120" cy="180" r="3.4"/><circle cx="150" cy="150" r="3.4"/>
-          <circle cx="95" cy="220" r="3.4"/><circle cx="185" cy="120" r="3.4"/>
-          <circle cx="170" cy="185" r="3.4"/><circle cx="110" cy="150" r="3.4"/>
-        </g>
-        <path d="M55 235 Q70 120 130 95 Q200 62 255 55" stroke="#2E6B57" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-        <g fill="#2E6B57">
-          <circle cx="55" cy="235" r="4.6"/><circle cx="90" cy="150" r="4.6"/>
-          <circle cx="130" cy="95" r="4.6"/><circle cx="190" cy="68" r="4.6"/>
-          <circle cx="255" cy="55" r="4.6"/>
-        </g>
-      </svg>
-
-      <div class="portrait-frame">${avatarInner}</div>
-
-      <div class="portrait-contact">${socialHTML}</div>
-    </div>`;
-
-  // Update page title and nav brand
-  if (profile.name_en) {
-    document.title = `${profile.name_en} — Researcher`;
-    const brand = document.getElementById('nav-brand');
-    if (brand) {
-      const parts = profile.name_en.split(' ');
-      const last = parts[parts.length - 1];
-      brand.innerHTML = `${esc(last)}<span class="dot">.</span>`;
-    }
-  }
-
-  // Apply bg image if set
-  if (profile.bg) {
-    document.querySelector('header.hero').style.backgroundImage = `url('${profile.bg}')`;
-    document.querySelector('header.hero').style.backgroundSize = 'cover';
-    document.querySelector('header.hero').style.backgroundPosition = 'center 65%';
-  }
-}
-
-// ── Publications ────────────────────────────────────────────
-const PUB_CATEGORIES = [
-  { key: 'journal',    label: 'Journal Papers' },
-  { key: 'conference', label: 'Conference Papers' },
-  { key: 'preprint',   label: 'Preprints' },
+const SOCIAL = [
+  ['email', 'Email'], ['scholar', 'Google Scholar'], ['github', 'GitHub'],
+  ['linkedin', 'LinkedIn'], ['orcid', 'ORCID'], ['twitter', 'X / Twitter'], ['instagram', 'Instagram'],
 ];
 
-function renderPubEntry(p) {
-  const authorsHTML = (p.authors || []).map(a =>
-    a.is_me ? `<b>${esc(a.name)}</b>` : esc(a.name)
-  ).join(', ');
+// ── Sidebar ─────────────────────────────────────────────────
+function renderSidebar(P) {
+  const s = P.social || {};
+  const items = SOCIAL.filter(([k]) => ok(s[k])).map(([k, label]) => {
+    const href = k === 'email' ? `mailto:${s[k]}` : s[k];
+    const text = k === 'email' ? s[k] : label;
+    const ext = k === 'email' ? '' : ' target="_blank" rel="noopener"';
+    return `<li>${ICONS[k] || ''}<a href="${esc(href)}"${ext}>${esc(text)}</a></li>`;
+  }).join('');
 
-  const year = extractYear(p.venue);
-  const venueName = (p.venue || '').replace(/·?\s*\d{4}.*/, '').replace(/ - .*/, '').trim();
-  const venueDisplay = [venueName, p.status].filter(Boolean).join(' · ');
-
-  const linkKeys = ['pdf', 'arxiv', 'code', 'bibtex', 'project', 'slides', 'poster', 'video'];
-  const linksHTML = linkKeys
-    .filter(k => p.links && p.links[k] && p.links[k] !== '#' && p.links[k] !== '')
-    .map(k => `<a href="${esc(p.links[k])}" target="_blank" rel="noopener">${k.toUpperCase()}</a>`)
-    .join('');
-
-  const isPdf = p.thumbnail && p.thumbnail.toLowerCase().endsWith('.pdf');
-  const thumbHTML = p.thumbnail && !isPdf
-    ? `<div class="pub-thumb-wrap"><img src="${esc(p.thumbnail)}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentNode.style.display='none'"></div>`
-    : '';
-
-  return `
-    <div class="pub reveal">
-      <div class="pub-year">${esc(year)}</div>
-      <div>
-        <p class="pub-title">${esc(p.title)}</p>
-        <p class="pub-meta">${authorsHTML}</p>
-        ${venueDisplay ? `<span class="venue">${esc(venueDisplay)}</span>` : ''}
-        ${thumbHTML}
-        ${linksHTML ? `<div class="pub-links">${linksHTML}</div>` : ''}
-      </div>
-    </div>`;
+  $('sidebar').innerHTML = `
+    <img class="avatar" src="${esc(P.avatar)}" alt="Portrait of ${esc(P.name_en)}">
+    <h1>${esc(P.name_en)}</h1>
+    <div class="role">${esc(P.title)}<br>
+      <a href="${esc(P.org_url || '#')}" target="_blank" rel="noopener">${esc(P.org)}</a>, ${esc(P.location || '')}</div>
+    <ul>${items}</ul>
+    ${P.cv_url ? `<a class="cv-btn" href="${esc(P.cv_url)}" target="_blank" rel="noopener">Curriculum Vitae (PDF)</a>` : ''}`;
 }
 
-function renderPublications(pubs) {
-  const list = document.getElementById('pub-list');
-  if (!list) return;
-
-  if (!pubs.length) {
-    list.innerHTML = `<p style="color:var(--ink-faint);font-family:'JetBrains Mono',monospace;font-size:14px;">No publications yet.</p>`;
-    return;
-  }
-
-  const grouped = {};
-  PUB_CATEGORIES.forEach(c => { grouped[c.key] = []; });
-  grouped['other'] = [];
-  pubs.forEach(p => {
-    const key = PUB_CATEGORIES.find(c => c.key === p.type) ? p.type : 'other';
-    grouped[key].push(p);
-  });
-
-  let html = '';
-  PUB_CATEGORIES.forEach(cat => {
-    const items = grouped[cat.key];
-    if (!items.length) return;
-    html += `<div class="pub-category-head">${esc(cat.label)}</div>`;
-    items.forEach(p => { html += renderPubEntry(p); });
-  });
-  grouped['other'].forEach(p => { html += renderPubEntry(p); });
-
-  list.innerHTML = html;
+// ── About ───────────────────────────────────────────────────
+// `about` paragraphs are trusted HTML written by the site owner in profile.json.
+function renderAbout(P) {
+  const paras = (P.about || []).map(p => `<p>${p}</p>`).join('');
+  const quote = P.quote ? `<p class="quote">${esc(P.quote)}</p>` : '';
+  const chips = (P.interests || []).map(i => `<span>${esc(i)}</span>`).join('');
+  $('about-body').innerHTML = `${paras}${quote}
+    ${chips ? `<div class="interests-label">Research interests</div><div class="chips">${chips}</div>` : ''}`;
 }
 
 // ── News ────────────────────────────────────────────────────
 function renderNews(news) {
-  const list = document.getElementById('news-list');
-  if (!list) return;
+  if (!$('news-list')) return;
+  $('news-list').innerHTML = news.map(n => `
+    <tr><td class="d">${esc(String(n.date).replace(/^(\w{3})\w*/, '$1'))}</td>
+        <td><b>${esc(n.title)}.</b> ${esc(n.body || '')}</td></tr>`).join('');
+}
 
-  list.innerHTML = news.map(n => `
-    <div class="news-item reveal">
-      <span class="news-date">${esc(n.date)}</span>
-      <span class="news-body"><strong>${esc(n.title)}</strong> ${esc(n.body || '')}</span>
+// ── Publications ────────────────────────────────────────────
+const LINK_KEYS = ['pdf', 'arxiv', 'code', 'project', 'slides', 'poster', 'video', 'bibtex'];
+
+function pubYear(p) {
+  if (p.year) return Number(p.year);
+  const m = String(p.venue || '').match(/\b(20\d{2})\b/);
+  return m ? Number(m[1]) : 0;
+}
+
+function renderPub(p) {
+  const authors = (p.authors || []).map(a =>
+    a.is_me ? `<span class="me">${esc(a.name)}</span>` : esc(a.name)).join(', ');
+  const venue = p.type === 'preprint'
+    ? 'arXiv preprint'
+    : String(p.venue || '').replace(/\s*·\s*\d{4}.*$/, '').replace(/\s*\([^)]*\)\s*$/, '');
+  const links = LINK_KEYS.filter(k => ok(p.links?.[k]))
+    .map(k => `<a href="${esc(p.links[k])}" target="_blank" rel="noopener">${k === 'bibtex' ? 'bib' : k}</a>`).join('');
+  const thumb = p.thumbnail && !/\.pdf$/i.test(p.thumbnail)
+    ? `<img class="thumb" src="${esc(p.thumbnail)}" alt="" loading="lazy" onerror="this.remove()">` : '';
+
+  return `
+    <article class="pub">
+      <div class="media"><span class="badge ${esc(p.type)}">${esc(p.abbr || '')}</span>${thumb}</div>
+      <div>
+        <div class="pt">${esc(p.title)}</div>
+        <div class="au">${authors}</div>
+        <div class="ve">${esc(venue)}, ${pubYear(p) || ''}${p.status ? ` · <span class="st">${esc(p.status)}</span>` : ''}</div>
+        ${links ? `<div class="btns">${links}</div>` : ''}
+      </div>
+    </article>`;
+}
+
+function renderPublications(pubs) {
+  const published = pubs.filter(p => p.type !== 'preprint').sort((a, b) => pubYear(b) - pubYear(a));
+  const preprints = pubs.filter(p => p.type === 'preprint').sort((a, b) => pubYear(b) - pubYear(a));
+  const years = [...new Set(published.map(pubYear))];
+
+  let html = '';
+  years.forEach(y => {
+    html += `<div class="yr">${y}</div>${published.filter(p => pubYear(p) === y).map(renderPub).join('')}`;
+  });
+  if (preprints.length) html += `<div class="yr">Preprints</div>${preprints.map(renderPub).join('')}`;
+  $('pub-list').innerHTML = html || '<p class="note">No publications yet.</p>';
+}
+
+// ── Experience & Education ─────────────────────────────────
+// `points` are trusted HTML written by the site owner in profile.json.
+function renderExperience(P) {
+  $('exp-list').innerHTML = (P.experience || []).map(e => `
+    <div class="row">
+      <div class="y">${esc(e.years)}</div>
+      <div>
+        <div class="h">${esc(e.role)}</div>
+        <div class="s">${esc(e.org)}${e.advisors ? ` · Advisor: ${esc(e.advisors)}` : ''}</div>
+        ${e.points?.length ? `<ul>${e.points.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
+      </div>
     </div>`).join('');
 }
 
-// ── Education ────────────────────────────────────────────────
-function renderEducation(profile) {
-  const list = document.getElementById('edu-list');
-  if (!list) return;
-
-  list.innerHTML = (profile.education || []).map(e => {
-    const supervisorHTML = (e.supervisors || []).filter(s => s.name)
-      .map(s => s.url && s.url !== '' && s.url !== 'https://'
-        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`
-        : esc(s.name)
-      ).join(', ');
-
-    const yearsShort = (e.years || '').replace(/–present/, '–now');
-
+function renderEducation(P) {
+  $('edu-list').innerHTML = (P.education || []).map(e => {
+    const sup = (e.supervisors || []).map(s => ok(s.url)
+      ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)).join(', ');
     return `
-      <div class="edu-item reveal">
-        <div class="edu-years">${esc(yearsShort)}</div>
+      <div class="row">
+        <div class="y">${esc(e.years || '')}</div>
         <div>
-          <div class="edu-deg">${esc(e.degree)}</div>
-          <div class="edu-school">${esc(e.school)}</div>
-          ${supervisorHTML ? `<div class="edu-supervisor">Supervisor: ${supervisorHTML}</div>` : ''}
+          <div class="h">${esc(e.degree)}</div>
+          <div class="s">${esc(e.school)}${sup ? ` · Advisor: ${sup}` : ''}</div>
         </div>
       </div>`;
   }).join('');
 }
 
-// ── Footer ──────────────────────────────────────────────────
-function renderFooter(profile) {
-  const footer = document.getElementById('site-footer');
-  if (!footer) return;
-  const year = new Date().getFullYear();
-  footer.innerHTML = `<div class="wrap">© ${year} ${esc(profile.name_en || 'Researcher')} · built with care</div>`;
-}
-
-// ── Scroll reveal ───────────────────────────────────────────
-function initScrollReveal() {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: .12 });
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = `${Math.min(i, 5) * 60}ms`;
-    io.observe(el);
+// ── Extras: thumbnail lightbox, active nav link, footer ────
+function initLightbox() {
+  const box = document.createElement('div');
+  box.className = 'lightbox';
+  box.innerHTML = '<img alt="">';
+  document.body.appendChild(box);
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('thumb') || e.target.classList.contains('zoomable')) {
+      box.querySelector('img').src = e.target.src;
+      box.classList.toggle('wide', e.target.classList.contains('zoomable'));
+      box.classList.add('open');
+    } else if (box.contains(e.target)) box.classList.remove('open');
   });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('open'); });
 }
 
-// ── Local file warning ──────────────────────────────────────
-function showLocalWarning() {
-  const b = document.createElement('div');
-  b.style.cssText = 'background:#5a2d00;color:#ffd580;font-family:monospace;font-size:13px;padding:10px 28px;text-align:center;';
-  b.innerHTML = `⚠ Open via a local server: <code>python3 -m http.server 8000</code> → <code>http://localhost:8000</code>`;
-  document.body.prepend(b);
+function initActiveNav() {
+  const links = [...document.querySelectorAll('.nav a[href^="#"]')];
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === `#${en.target.id}`));
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('main section').forEach(s => io.observe(s));
+}
+
+function renderFooter(P) {
+  const d = new Date(document.lastModified);
+  const updated = isNaN(d) ? '' : ` · Last updated ${d.toLocaleString('en-US', { month: 'short', year: 'numeric' })}`;
+  $('site-footer').textContent = `© ${new Date().getFullYear()} ${P.name_en || ''}${updated}`;
 }
 
 // ── Bootstrap ───────────────────────────────────────────────
 async function init() {
-  if (location.protocol === 'file:') { showLocalWarning(); return; }
-
-  const [profile, pubs, news] = await Promise.all([
-    safeJson('data/profile.json', {}),
-    safeJson('data/publications.json', []),
-    safeJson('data/news.json', []),
+  if (location.protocol === 'file:') {
+    document.body.insertAdjacentHTML('afterbegin',
+      '<div style="background:#5a2d00;color:#ffd580;font:13px monospace;padding:10px;text-align:center">' +
+      'Open via a local server: <code>python3 -m http.server 8000</code> → http://localhost:8000</div>');
+    return;
+  }
+  const [P, pubs, news] = await Promise.all([
+    getJson('data/profile.json').catch(() => ({})),
+    getJson('data/publications.json').catch(() => []),
+    getJson('data/news.json').catch(() => []),
   ]);
-
-  renderHero(profile);
-  renderPublications(pubs);
+  renderSidebar(P);
+  renderAbout(P);
   renderNews(news);
-  renderEducation(profile);
-  renderFooter(profile);
-  initScrollReveal();
+  renderPublications(pubs);
+  renderExperience(P);
+  renderEducation(P);
+  renderFooter(P);
+  initLightbox();
+  initActiveNav();
 }
 
 init();
